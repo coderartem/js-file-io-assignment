@@ -3,15 +3,24 @@
 const fs = require('fs')
 
 class Employee {
-  constructor (/* ??? */) {
-    // TODO
+  constructor (data) {
+
+      this.name = data.name;
+      this.title = data.title;
+      this.salary = data.salary;
   }
 
-  // TODO ???
-}
+    promote(title,salary){
+      this.title = title;
+      this.salary = salary;
+  }
 
-// TODO ???
+    static parseFromFilePath(path){
+          return new Employee(JSON.parse(fs.readFileSync(path)));
+    }
+}
 
 module.exports = {
   Employee
 }
+
